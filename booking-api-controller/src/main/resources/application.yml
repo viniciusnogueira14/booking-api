@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:booking
+    username: admin
+    password: pass
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+  h2:
+    console:
+      enabled: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-api
+
+open-api:
+  dev-url: https://dev.mydevelopmenturl.com
+  prd-url: https://www.myproductionurl.com.br
