@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.hostfully</groupId>
         <artifactId>booking-api</artifactId>
-        <version>${project.version}</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>booking-api-repository</artifactId>
@@ -27,7 +27,7 @@
         <dependency>
             <groupId>com.hostfully</groupId>
             <artifactId>booking-api-entity</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 

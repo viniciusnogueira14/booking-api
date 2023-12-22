@@ -44,7 +44,7 @@ public class BlockService {
             throws ParameterValidationException, BusinessException {
 
         var booking = helper.findBookingOrElseThrow(uuid);
-        if (helper.isBlock(booking.getStatus())) {
+        if (helper.isNotBlock(booking.getStatus())) {
             throw new BusinessException("You can update bookings only with BLOCKED status");
         }
 
@@ -57,7 +57,7 @@ public class BlockService {
 
     public void deleteBlock(String uuid) throws ParameterValidationException, BusinessException {
         var booking = helper.findBookingOrElseThrow(uuid);
-        if (helper.isBlock(booking.getStatus())) {
+        if (helper.isNotBlock(booking.getStatus())) {
             throw new BusinessException("You can delete bookings only with BLOCKED status");
         }
 
@@ -66,7 +66,7 @@ public class BlockService {
 
     public BookingResponseResource findByUUID(String uuid) throws ParameterValidationException {
         var block = helper.findBookingOrElseThrow(uuid);
-        if (helper.isBlock(block.getStatus())) {
+        if (helper.isNotBlock(block.getStatus())) {
             return mapper.map(block, BookingResponseResource.class);
         }
 

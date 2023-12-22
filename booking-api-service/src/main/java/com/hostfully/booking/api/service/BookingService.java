@@ -43,7 +43,7 @@ public class BookingService {
     public BookingResponseResource updateBooking(String uuid, BookingRequestResource requestResource) throws ParameterValidationException, BusinessException {
         var booking = helper.findBookingOrElseThrow(uuid);
 
-        if (helper.isBooking(booking.getStatus()) && !booking.getStatus().equals(BookingStatus.BOOKED)) {
+        if (helper.isNotBooking(booking.getStatus()) || !booking.getStatus().equals(BookingStatus.BOOKED)) {
             throw new BusinessException("You can update bookings only with BOOKED status");
         }
 
@@ -57,7 +57,7 @@ public class BookingService {
 
     public void cancelBooking(String bookingUuid) throws ParameterValidationException, BusinessException {
         var booking = helper.findBookingOrElseThrow(bookingUuid);
-        if (helper.isBooking(booking.getStatus()) && !booking.getStatus().equals(BookingStatus.BOOKED)) {
+        if (helper.isNotBooking(booking.getStatus()) || !booking.getStatus().equals(BookingStatus.BOOKED)) {
             throw new BusinessException("You can cancel bookings only with BOOKED status");
         }
 
@@ -67,7 +67,7 @@ public class BookingService {
 
     public void rebookBooking(String uuid) throws ParameterValidationException, BusinessException {
         var booking = helper.findBookingOrElseThrow(uuid);
-        if (helper.isBooking(booking.getStatus()) && !booking.getStatus().equals(BookingStatus.CANCELED)) {
+        if (helper.isNotBooking(booking.getStatus()) || !booking.getStatus().equals(BookingStatus.CANCELED)) {
             throw new BusinessException("You can rebook bookings with CANCELED status");
         }
 
@@ -79,7 +79,7 @@ public class BookingService {
 
     public void deleteBooking(String uuid) throws ParameterValidationException, BusinessException {
         var booking = helper.findBookingOrElseThrow(uuid);
-        if (helper.isBooking(booking.getStatus())) {
+        if (helper.isNotBooking(booking.getStatus())) {
             throw new BusinessException("You can delete bookings only with BOOKED or CANCELED status");
         }
 

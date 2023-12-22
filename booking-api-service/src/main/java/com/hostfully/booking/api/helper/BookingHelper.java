@@ -63,7 +63,15 @@ public class BookingHelper {
         return bookingStatus.equals(BookingStatus.BLOCKED);
     }
 
+    public boolean isNotBlock(BookingStatus bookingStatus) {
+        return !isBlock(bookingStatus);
+    }
+
     public boolean isBooking(BookingStatus bookingStatus) {
         return bookingStatus.equals(BookingStatus.BOOKED) || bookingStatus.equals(BookingStatus.CANCELED);
+    }
+
+    public boolean isNotBooking(BookingStatus bookingStatus) {
+        return !isBooking(bookingStatus);
     }
 }

@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.hostfully</groupId>
         <artifactId>booking-api</artifactId>
-        <version>${project.version}</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>booking-api-controller</artifactId>
@@ -39,8 +39,25 @@
         <dependency>
             <groupId>com.hostfully</groupId>
             <artifactId>booking-api-service</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
